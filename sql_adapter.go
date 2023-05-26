@@ -27,7 +27,7 @@ type SQLAdapter struct {
 	tableName string
 }
 
-func NewSQLAdapter(driverName, user, password, url, databaseName, tableName string) (*SQLAdapter, error) {
+func NewAdapter(driverName, user, password, url, databaseName, tableName string) (*SQLAdapter, error) {
 	db, err := sql.Open(driverName, fmt.Sprintf("%s:%s@tcp(%s)/%s", user, password, url, databaseName))
 	if err != nil {
 		return nil, err
@@ -36,6 +36,13 @@ func NewSQLAdapter(driverName, user, password, url, databaseName, tableName stri
 		db:        db,
 		tableName: tableName,
 	}, nil
+}
+
+func NewAdapterFromSQL(db *sql.DB, tableName string) *SQLAdapter {
+	return &SQLAdapter{
+		db:        db,
+		tableName: tableName,
+	}
 }
 
 func (a *SQLAdapter) SavePolicy(model model.Model) error {
