@@ -7,7 +7,7 @@ This is an sql-adapter for Casbin. With this library, Casbin can load policy fro
 
 ### Usage
 ```go
-a, err := NewSQLAdapter("mysql", "root", "root", "127.0.0.1:3306", "casbin", "casbin_rule")
+a, err := NewAdapter("mysql", "root", "root", "127.0.0.1:3306", "casbin", "casbin_rule")
 if err != nil {
     panic(err)
 }
