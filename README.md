@@ -12,4 +12,7 @@ if err != nil {
     panic(err)
 }
 e, err := casbin.NewEnforcer("model.conf", a)
+if err != nil {
+    panic(err)
+}
 ```
